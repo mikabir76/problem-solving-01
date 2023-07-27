@@ -128,4 +128,63 @@ function calculate(num1, operator, num2) {
       }
       
       const password = generateRandomPassword(12);
-      console.log(password);
+    //   console.log(password);
+
+    // ===============================Task -07
+    function romanToInteger(romanNumeral) {
+        const romanSymbols = {
+          'I': 1,
+          'V': 5,
+          'X': 10,
+          'L': 50,
+          'C': 100,
+          'D': 500,
+          'M': 1000
+        };
+      
+        let result = 0;
+      
+        for (let i = 0; i < romanNumeral.length; i++) {
+          const currentSymbolValue = romanSymbols[romanNumeral[i]];
+          const nextSymbolValue = romanSymbols[romanNumeral[i + 1]];
+      
+          if (nextSymbolValue > currentSymbolValue) {
+            result += nextSymbolValue - currentSymbolValue;
+            i++;
+          } else {
+            result += currentSymbolValue;
+          }
+        }
+      
+        return result;
+      }
+
+    // ===============================Task -08
+
+    function findSecondSmallest(arr) {
+        if (arr.length < 2) {
+          return "Array must contain at least two elements.";
+        }
+      
+        let smallest = Infinity;
+        let secondSmallest = Infinity;
+      
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] < smallest) {
+            secondSmallest = smallest;
+            smallest = arr[i];
+          } else if (arr[i] < secondSmallest && arr[i] !== smallest) {
+            secondSmallest = arr[i];
+          }
+        }
+      
+        if (secondSmallest === Infinity) {
+          return "No second smallest element found.";
+        }
+      
+        return secondSmallest;
+      }
+      const numberz = [5, 1, 9, 3, 7, 4];
+      const secondSmallest = findSecondSmallest(numberz);
+      console.log(secondSmallest); 
+            
